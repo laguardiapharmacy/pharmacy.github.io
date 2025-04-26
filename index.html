@@ -3755,193 +3755,191 @@
         }
 
         /* Sanitization Products Section - Simplified */
-        .sanitization-section {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
+/* Sanitization Products Section - Simplified */
+.sanitization-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
 
-        .sanitization-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
+.sanitization-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
 
-        .sanitization-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+.sanitization-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
 
-        .sanitization-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary-color);
-            position: relative;
-            margin-bottom: 25px;
-        }
+.sanitization-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+    margin-bottom: 25px;
+}
 
-        .sanitization-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent-color);
-        }
+.sanitization-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-color);
+}
 
-        .sanitization-products {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 25px;
-        }
+.sanitization-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+}
 
-        .sanitization-item {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+.sanitization-item {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .sanitization-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
+.sanitization-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
 
-        .sanitization-img {
-            height: 200px;
-            overflow: hidden;
-        }
+/* Improved image handling with transparent background */
+.sanitization-img,
+.surgical-img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%; /* 3/4 = 0.75 = 75% */
+    position: relative;
+    background-color: transparent; /* Transparent background */
+}
 
-        .sanitization-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+.sanitization-img img,
+.surgical-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps the whole image visible */
+    display: block;
+    transition: transform 0.5s ease;
+}
 
-        .sanitization-item:hover .sanitization-img img {
-            transform: scale(1.1);
-        }
+.sanitization-item:hover .sanitization-img img,
+.surgical-item:hover .surgical-img img {
+    transform: scale(1.05);
+}
 
-        .sanitization-title {
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
+.sanitization-title {
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
 
-        /* Surgical Support Items Section - Simplified */
-        .surgical-support-section {
-            padding: 80px 0;
-        }
+/* Surgical Support Items Section - Simplified */
+.surgical-support-section {
+    padding: 80px 0;
+}
 
-        .surgical-support-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-        }
+.surgical-support-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
 
-        .surgical-support-header {
-            margin-bottom: 40px;
-            text-align: center;
-        }
+.surgical-support-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
 
-        .surgical-support-header h2 {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--primary-color);
-            position: relative;
-            margin-bottom: 25px;
-        }
+.surgical-support-header h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+    margin-bottom: 25px;
+}
 
-        .surgical-support-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background-color: var(--accent-color);
-        }
+.surgical-support-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-color);
+}
 
-        .surgical-items {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
+.surgical-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
 
-        .surgical-item {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
+.surgical-item {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
 
-        .surgical-item:hover {
-            transform: translateY(-10px);
-        }
+.surgical-item:hover {
+    transform: translateY(-10px);
+}
 
-        .surgical-img {
-            height: 250px;
-            overflow: hidden;
-        }
+.surgical-title {
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
 
-        .surgical-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+/* Responsive Styles */
+@media screen and (max-width: 1100px) {
+    .sanitization-products {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
 
-        .surgical-item:hover .surgical-img img {
-            transform: scale(1.1);
-        }
+@media screen and (max-width: 992px) {
+    .sanitization-products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .surgical-items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        .surgical-title {
-            padding: 15px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
+@media screen and (max-width: 768px) {
+    .sanitization-products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
-        /* Responsive Styles */
-        @media screen and (max-width: 1100px) {
-            .sanitization-products {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media screen and (max-width: 992px) {
-            .sanitization-products {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .surgical-items {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .sanitization-products {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media screen and (max-width: 576px) {
-            .sanitization-products {
-                grid-template-columns: 1fr;
-            }
-            
-            .surgical-items {
-                grid-template-columns: 1fr;
-            }
-        }
+@media screen and (max-width: 576px) {
+    .sanitization-products {
+        grid-template-columns: 1fr;
+    }
+    
+    .surgical-items {
+        grid-template-columns: 1fr;
+    }
+}
         
     </style>
 </head>
@@ -4095,8 +4093,8 @@
                 <div class="serve">
                     <h1>💸</h1>
                     <div class="serve-content">
-                        <h2>Ria Bill Payment</h2>
-                        <h3>Pay your bills quickly and securely with Ria Bill Payment services for utilities, phone, and other essential services.</h3>
+                        <h2>Moneygram</h2>
+                        <h3>Pay your bills, tickets voilations and money transfer quickly and securely with Moneygram.</h3>
                     </div>
                 </div>
         
@@ -4165,15 +4163,6 @@
                 <h1>Free Services for Your Health <br>and Well-being</h1>
             </div>
             <div class="service-inner">
-                <div class="inner1">
-                    <div class="text">
-                        <h1>Covid-19 Home Test Kit</h1>
-                        <h2>Protect yourself and loved ones with FREE COVID-19 home test kits. Get yours today at our pharmacy!</h2>
-                    </div>
-                    <div class="img">
-                        <img src="img/covid_testkit.jpg" alt="Covid-19 Home Test Kit">
-                    </div>
-                </div>
                 <div class="inner2">
                     <div class="text">
                         <h1>Flu Shot</h1>
@@ -4286,7 +4275,7 @@
                         <h1>Headache & Migraine Relief</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Headache & Migraine Relief">
+                        <img src="./img/migrane.jpg" alt="Headache & Migraine Relief">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4294,7 +4283,7 @@
                         <h1>Cold & Flu Relief</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Cold & Flu">
+                        <img src="./img/cold_flu.jpg" alt="Cold & Flu">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4302,7 +4291,7 @@
                         <h1>Pain Relief</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Pain Relief">
+                        <img src="./img/pain.jpg" alt="Pain Relief">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4310,7 +4299,7 @@
                         <h1>Allergy Relief</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Allergy Relief">
+                        <img src="./img/allergy.jpg" alt="Allergy Relief">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4318,7 +4307,7 @@
                         <h1>Itch, Rash & Infection Relief</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Itch, Rash & Infection Relief">
+                        <img src="./img/itch.jpg" alt="Itch, Rash & Infection Relief">
                     </div>
                 </div>
             </div>
@@ -4338,7 +4327,7 @@
                         <h1>Bath & Body Care</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="img/maternal_health.jpg" alt="Feminie Health & Comfort">
+                        <img src="img/bath_care.jpg" alt="Bath & Body Care">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4346,7 +4335,7 @@
                         <h1>Hair Care</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Headache & Migraine">
+                        <img src="./img/hair_care.png" alt="Hair Care">
                     </div>
                 </div>
                 <div class="cont2">
@@ -4354,7 +4343,7 @@
                         <h1>Skin Care</h1>
                     </div>
                     <div class="cont-img">
-                        <img src="" alt="Cold & Flu">
+                        <img src="./img/skin_care.png" alt="Skin Care">
                     </div>
                 </div>
             </div>
@@ -4371,7 +4360,7 @@
                     <!-- Surgical Gloves -->
                     <div class="sanitization-item">
                         <div class="sanitization-img">
-                            <img src="/api/placeholder/400/320" alt="Surgical Gloves">
+                            <img src="./img/gloves.jpg" alt="Surgical Gloves">
                         </div>
                         <div class="sanitization-title">Surgical Gloves</div>
                     </div>
@@ -4379,23 +4368,23 @@
                     <!-- Hydrogen Peroxide -->
                     <div class="sanitization-item">
                         <div class="sanitization-img">
-                            <img src="/api/placeholder/400/320" alt="Hydrogen Peroxide">
+                            <img src="./img/hydrogen_perozide.jpg" alt="Hydrogen Peroxide">
                         </div>
                         <div class="sanitization-title">Hydrogen Peroxide</div>
                     </div>
                     
-                    <!-- Isopropyl Alcohol -->
+                    <!-- Rubbing Alcohol -->
                     <div class="sanitization-item">
                         <div class="sanitization-img">
-                            <img src="/api/placeholder/400/320" alt="Isopropyl Alcohol">
+                            <img src="./img/rubbing_alc.jpg" alt="Rubbing Alcohol">
                         </div>
-                        <div class="sanitization-title">Isopropyl Alcohol</div>
+                        <div class="sanitization-title">Rubbing Alcohol</div>
                     </div>
                     
                     <!-- Hand Sanitizer -->
                     <div class="sanitization-item">
                         <div class="sanitization-img">
-                            <img src="/api/placeholder/400/320" alt="Hand Sanitizer">
+                            <img src="./img/hand_sanitizer.jpg" alt="Hand Sanitizer">
                         </div>
                         <div class="sanitization-title">Hand Sanitizer</div>
                     </div>
@@ -4403,7 +4392,7 @@
                     <!-- Face Masks -->
                     <div class="sanitization-item">
                         <div class="sanitization-img">
-                            <img src="/api/placeholder/400/320" alt="Face Masks">
+                            <img src="./img/face_mask.jpg" alt="Face Masks">
                         </div>
                         <div class="sanitization-title">Medical Face Masks</div>
                     </div>
@@ -4422,7 +4411,7 @@
                     <!-- Wheelchair -->
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Wheelchair">
+                            <img src="./img/wheelchair.jpg" alt="Wheelchair">
                         </div>
                         <div class="surgical-title">Wheelchair</div>
                     </div>
@@ -4430,7 +4419,7 @@
                     <!-- Walking Cane -->
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Walking Cane">
+                            <img src="./img/walking_cane.jpg" alt="Walking Cane">
                         </div>
                         <div class="surgical-title">Walking Cane</div>
                     </div>
@@ -4438,39 +4427,38 @@
                     <!-- Walking Support -->
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Walking Support">
+                            <img src="./img/walker.jpg" alt="Walking Support">
                         </div>
                         <div class="surgical-title">Medical Walker</div>
                     </div>
-                    
-                    <!-- Leg Support -->
+
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Leg Support">
+                            <img src="./img/walker_with_seat.jpg" alt="Walker with Seat Support">
                         </div>
-                        <div class="surgical-title">Knee Brace</div>
+                        <div class="surgical-title">Walker with Seat Support</div>
                     </div>
                     
                     <!-- Back Support -->
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Back Support">
+                            <img src="./img/bath_chair.jpg" alt="Bath Chair">
                         </div>
-                        <div class="surgical-title">Lumbar Support</div>
+                        <div class="surgical-title">Bath Chair</div>
                     </div>
                     
-                    <!-- Arm Sling -->
+                    <!-- TOILET SAFETY FRAME -->
                     <div class="surgical-item">
                         <div class="surgical-img">
-                            <img src="/api/placeholder/400/320" alt="Arm Sling">
+                            <img src="./img/safety_frame.jpg" alt="TOILET SAFETY FRAME">
                         </div>
-                        <div class="surgical-title">Arm Sling</div>
+                        <div class="surgical-title">Toilet Safety Frame</div>
                     </div>
                 </div>
             </div>
         </section>
 
-
+<!--
         <section class="baby-care-section">
             <div class="container">
               <div class="section-header">
@@ -4479,39 +4467,33 @@
               </div>
         
               <div class="products-grid">
-                <!-- First Product -->
                 <div class="product-card">
-                  <span class="product-badge">Best Seller</span>
                   <div class="product-image">
-                    <img src="/api/placeholder/350/350" alt="Premium Baby Diapers">
+                    <img src="./img/similac.jpg" alt="Similiac">
                   </div>
                   <div class="product-content">
                     <div class="product-meta">
-                      <span class="product-category">Nutrition</span>
+                      <span class="product-category">Similac Soy Isomil</span>
                     </div>
-                    <h3 class="product-title">Advanced-Protection Premium Baby Diapers</h3>
+                    <h3 class="product-title">Soy-Based Powder Infant Formula</h3>
                     
                   </div>
                 </div>
         
-                <!-- Second Product -->
                 <div class="product-card">
-                  <span class="product-badge">Organic</span>
                   <div class="product-image">
-                    <img src="/api/placeholder/350/350" alt="Organic Baby Food">
+                    <img src="./img/enfamil.jpg" alt="Enfamil">
                   </div>
                   <div class="product-content">
                     <div class="product-meta">
-                      <span class="product-category">Wellness</span>
+                      <span class="product-category">Enfamil</span>
                     </div>
-                    <h3 class="product-title">Certified Organic Baby Food Collection</h3>
+                    <h3 class="product-title">Infant Formula Milk-Based Powder with Iron</h3>
                     
                   </div>
                 </div>
         
-                <!-- Third Product -->
                 <div class="product-card">
-                  <span class="product-badge">Premium</span>
                   <div class="product-image">
                     <img src="/api/placeholder/350/350" alt="Premium Infant Formula">
                   </div>
@@ -4524,15 +4506,13 @@
                   </div>
                 </div>
         
-                <!-- Fourth Product -->
                 <div class="product-card">
-                  <span class="product-badge">Specialty</span>
                   <div class="product-image">
                     <img src="./img/Hypoallergenic_Baby_Formula.webp" alt="Specialty Formula">
                   </div>
                   <div class="product-content">
                     <div class="product-meta">
-                      <span class="product-category">Healthcare</span>
+                      <span class="product-category">Nutragimen</span>
                     </div>
                     <h3 class="product-title">Hypoallergenic Specialty Baby Formula</h3>
                     
@@ -4542,7 +4522,7 @@
             </div>
         </section>
 
-        
+    -->
 
         <section class="payment-section">
             <div class="payment-container">
