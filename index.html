@@ -1,0 +1,5331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laguardia Pharmacy</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="./img/incon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- Google Translate Script -->
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,bn,hi,pa,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        // Function to get browser language
+        function getBrowserLanguage() {
+            // Get browser language (returns language code like 'en-US', 'fr', etc.)
+            let browserLang = navigator.language || navigator.userLanguage;
+            
+            // Extract primary language code (e.g., 'en-US' becomes 'en')
+            browserLang = browserLang.split('-')[0];
+            
+            // Map of supported languages in our Google Translate
+            const supportedLanguages = {
+                'ar': 'Arabic',
+                'hi': 'Hindi',
+                'es': 'Spanish',
+                'en': 'English',
+                'bn': 'Bengali',
+                'pa': 'Punjabi'
+            };
+            
+            // Return the detected language if supported, otherwise default to no translation
+            return supportedLanguages[browserLang] ? browserLang : null;
+        }
+
+        // Function to automatically translate the page
+        function autoTranslatePage() {
+            // Wait for Google Translate to load
+            setTimeout(function() {
+                const browserLang = getBrowserLanguage();
+                
+                // Only translate if not English and supported
+                if (browserLang && browserLang !== 'en') {
+                    // This directly triggers Google's translation
+                    const selectElement = document.querySelector('.goog-te-combo');
+                    if (selectElement) {
+                        // Set value based on language code
+                        for (let i = 0; i < selectElement.options.length; i++) {
+                            if (selectElement.options[i].value.indexOf(browserLang) !== -1) {
+                                selectElement.value = selectElement.options[i].value;
+                                // Dispatch change event to trigger translation
+                                selectElement.dispatchEvent(new Event('change'));
+                                
+                                // Update message in banner
+                                const translateMessage = document.querySelector('.translate-message span');
+                                if (translateMessage) {
+                                    translateMessage.textContent = 'Page automatically translated:';
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }, 1000); // Give Google Translate time to initialize
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #0f4c81;
+            --secondary-color: #5b9bd5;
+            --accent-color: #8bc34a;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Roboto', sans-serif;
+            --transition-speed: 0.3s;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+
+
+            --primary: #1e5f74;
+            --primary-light: #3894ad;
+            --secondary: #f6ae2d;
+            --accent: #e64a19;
+            --light: #f5f7fa;
+            --dark: #202a37;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-stronger: rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --radius: 8px;
+            --radius-lg: 16px;
+            --container-width: 1320px;
+            --header-height: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-primary);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        /* Header & Navigation */
+        .heading-nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-content1 {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-content1 img {
+            height: 50px;
+            margin-right: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .nav-content1:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-content1 h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 0;
+        }
+
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 15px;
+            transition: all var(--transition-speed);
+            color: white;
+        }
+
+        .facebook {
+            background-color: #3b5998;
+        }
+
+        .linkedin {
+            background-color: #0077b5;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-content3 {
+            display: flex;
+        }
+
+        .nav-content3 a {
+            margin-left: 25px;
+            font-weight: 600;
+            color: var(--dark-color);
+            position: relative;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-content3 a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width var(--transition-speed);
+        }
+
+        .nav-content3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-content3 a:hover:after {
+            width: 100%;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        /* Mobile sidebar */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1001;
+            top: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding-left: 30px;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            color: white;
+        }
+
+        /* Modern Hero Section Styles */
+        .hero-section {
+        background: linear-gradient(120deg, #f8f9fa 0%, #e9f4ff 100%);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+        }
+
+        .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -10%;
+        right: -5%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(139, 195, 74, 0.1) 0%, rgba(15, 76, 129, 0.05) 70%);
+        border-radius: 50%;
+        z-index: 1;
+        }
+
+        .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        }
+
+        /* Hero Content Styles */
+        .hero-content {
+        padding-right: 40px;
+        }
+
+        .hero-tagline {
+        display: inline-block;
+        background-color: rgba(139, 195, 74, 0.15);
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 14px;
+        margin-bottom: 24px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        }
+
+        .hero-title {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        color: var(--primary-color);
+        letter-spacing: -0.5px;
+        }
+
+        .hero-description {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 32px;
+        max-width: 90%;
+        }
+
+        .hero-cta {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 40px;
+        }
+
+        .primary-btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        font-weight: 600;
+        padding: 15px 30px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(15, 76, 129, 0.2);
+        }
+
+        .primary-btn:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(15, 76, 129, 0.3);
+        }
+
+        .secondary-btn {
+        display: inline-block;
+        background-color: transparent;
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 14px 28px;
+        border-radius: 8px;
+        border: 2px solid var(--primary-color);
+        transition: all 0.3s ease;
+        }
+
+        .secondary-btn:hover {
+        background-color: rgba(15, 76, 129, 0.05);
+        transform: translateY(-3px);
+        }
+
+        /* Hero Image Styles */
+        .hero-image {
+        position: relative;
+        }
+
+        .image-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        height: 500px;
+        }
+
+        .image-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(15, 76, 129, 0) 70%, rgba(15, 76, 129, 0.2) 100%);
+        z-index: 1;
+        }
+
+        .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+        }
+
+        .hero-image:hover .image-wrapper img {
+        transform: scale(1.05);
+        }
+
+        .trust-badge {
+        position: absolute;
+        bottom: 30px;
+        left: -30px;
+        background: white;
+        display: flex;
+        align-items: center;
+        padding: 15px 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        }
+
+        .badge-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #5b9bd5 0%, #0f4c81 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        margin-right: 15px;
+        }
+
+        .badge-text span {
+        font-weight: 700;
+        font-size: 18px;
+        color: var(--primary-color);
+        display: block;
+        line-height: 1.2;
+        }
+
+        .badge-text p {
+        font-size: 14px;
+        color: #777;
+        margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+        .hero-title {
+            font-size: 40px;
+        }
+
+        .image-wrapper {
+            height: 450px;
+        }
+        }
+
+        @media screen and (max-width: 992px) {
+        .hero-container {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            padding-right: 0;
+            text-align: center;
+        }
+        
+        .hero-description {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            justify-content: center;
+        }
+        
+        
+        .feature-card {
+            min-width: 180px;
+        }
+        
+        .image-wrapper {
+            height: 400px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .trust-badge {
+            left: 20px;
+            bottom: 20px;
+        }
+        }
+
+        @media screen and (max-width: 768px) {
+        .hero-section {
+            padding: 60px 0;
+        }
+        
+        .hero-container {
+            padding: 0 30px;
+        }
+        
+        .hero-title {
+            font-size: 36px;
+        }
+        
+        .hero-description {
+            font-size: 16px;
+        }
+        
+        
+        .feature-card {
+            width: 100%;
+        }
+        
+        .image-wrapper {
+            height: 350px;
+        }
+        }
+
+        @media screen and (max-width: 576px) {
+        .hero-section {
+            padding: 40px 0;
+        }
+        
+        .hero-container {
+            padding: 0 20px;
+            gap: 30px;
+        }
+        
+        .hero-title {
+            font-size: 30px;
+        }
+        
+        .hero-cta {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .primary-btn, .secondary-btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        .image-wrapper {
+            height: 300px;
+        }
+        
+        .trust-badge {
+            left: 15px;
+            bottom: 15px;
+            padding: 12px 20px;
+        }
+        
+        .badge-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+        }
+        
+        .badge-text span {
+            font-size: 16px;
+        }
+        
+        .badge-text p {
+            font-size: 12px;
+        }
+        }
+
+
+
+        /* Categories Section */
+        .page2 {
+            padding: 80px 0;
+        }
+
+        .page2-up {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .upper {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .inner {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .inner:hover {
+            transform: translateY(-10px);
+        }
+
+        .inner img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .inner:hover img {
+            transform: scale(1.1);
+        }
+
+        .inner h2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: rgba(15, 76, 129, 0.8);
+            color: white;
+            margin: 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .page2-end {
+            max-width: 1400px;
+            margin: 50px auto 0;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .end-div, .end-div1 {
+            display: flex;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .end-div:hover, .end-div1:hover {
+            transform: translateY(-10px);
+        }
+
+        .end-div .inner, .end-div1 .inner {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .end-div .inner:hover, .end-div1 .inner:hover {
+            transform: none;
+        }
+
+        .end-div h3, .end-div1 h3 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .end-div p, .end-div1 p {
+            margin-bottom: 25px;
+            color: var(--dark-color);
+        }
+
+        .end-div a, .end-div1 a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            align-self: flex-start;
+        }
+
+        .end-div a:hover, .end-div1 a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .inner1 {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .inner1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .end-div:hover .inner1 img, .end-div1:hover .inner1 img {
+            transform: scale(1.05);
+        }
+
+        /* Brands Section */
+        .page3 {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .page3-up {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .txt-up h1 {
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .txt-up h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .txt-down {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .cont-div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cont-div:hover {
+            transform: translateY(-10px);
+        }
+
+        .cont-div img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .cont-div:hover img {
+            filter: grayscale(0%);
+        }
+
+        .page3-down {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .cont, .cont1, .cont2 {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            background-color: white;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .cont:hover, .cont1:hover, .cont2:hover {
+            transform: translateY(-10px);
+        }
+
+        .cont-txt h1, .cont1 .cont-txt h1, .cont2 .cont-txt h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .cont-txt a, .cont1 .cont-txt a, .cont2 .cont-txt a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transition: all var(--transition-speed);
+        }
+
+        .cont-txt a:hover, .cont1 .cont-txt a:hover, .cont2 .cont-txt a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cont-txt h2, .cont1 .cont-txt h2, .cont2 .cont-txt h2 {
+            font-size: 18px;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .cont-img {
+            margin-top: 20px;
+        }
+
+        .cont-img img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        .cont:hover .cont-img img, .cont1:hover .cont-img img, .cont2:hover .cont-img img {
+            transform: scale(1.05);
+        }
+
+        /* Baby Products Section */
+        .page3-end {
+            max-width: 1400px;
+            margin: 80px auto 0;
+            padding: 0 50px;
+        }
+
+        .page3-end .txt-up {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .page3-end .txt-up h1 {
+            font-size: 36px;
+            text-align: left;
+        }
+
+        .page3-end .txt-up h1:after {
+            left: 0;
+            transform: none;
+        }
+
+        .page3-end .txt-up h2 {
+            font-size: 18px;
+            color: var(--secondary-color);
+        }
+
+        .cont-items {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .cont-items .inner {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cont-up {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .cont-up img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cont-items .inner:hover .cont-up img {
+            transform: scale(1.1);
+        }
+
+        .cont-down {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cont1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cont1 h2 {
+            font-size: 14px;
+            color: var(--secondary-color);
+            padding: 5px 10px;
+            background-color: rgba(91, 155, 213, 0.1);
+            border-radius: 5px;
+            margin: 0;
+        }
+
+        .cont1 h3 {
+            font-size: 14px;
+            color: #ffa000;
+            margin: 0;
+        }
+
+        .cont2 h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            flex-grow: 1;
+        }
+
+        .cont3 {
+            margin-top: auto;
+        }
+
+        .cont3 button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+        }
+
+        .cont3 button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cereal Section */
+        .page4 {
+            padding: 80px 0;
+        }
+
+        .page4-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .cont-up {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .txt-up {
+            flex: 1;
+        }
+
+        .txt-up h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .txt-up h2 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .txt-up h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .txt-up a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all var(--transition-speed);
+        }
+
+        .txt-up a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-up {
+            flex: 1;
+            text-align: center;
+        }
+
+        .img-up img {
+            max-width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .img-up img:hover {
+            transform: scale(1.05);
+        }
+
+        .cont-middle, .cont-down {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .cont-middle:hover, .cont-down:hover {
+            transform: translateY(-10px);
+        }
+
+        .cont-middle h2, .cont-down h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* Services Section */
+        .page4-services {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .service-heading h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            position: relative;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .service-heading h1:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .service-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .inner1, .inner2 {
+            display: flex;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .inner1:hover, .inner2:hover {
+            transform: translateY(-10px);
+        }
+
+        .text {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .text h2 {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .text a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            align-self: flex-start;
+            transition: all var(--transition-speed);
+        }
+
+        .text a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .img {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .inner1:hover .img img, .inner2:hover .img img {
+            transform: scale(1.05);
+        }
+
+        /* Updated Service Middle Section */
+        .service-middle {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .serve {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .serve:hover {
+            transform: translateY(-10px);
+        }
+
+        .serve h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .serve h2 {
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .serve h3 {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #666;
+        }
+
+
+        /* Premium Footer Styles for Pharmacy Business */
+        .premium-footer {
+            background-color: #f8f9fa;
+            color: #202a37;
+            font-family: var(--font-primary);
+            position: relative;
+        }
+
+        /* Main Footer Section */
+        .premium-footer .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .footer-main {
+            padding: 80px 0 60px;
+            background: linear-gradient(to right, #f8f9fa, #e9f4ff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Brand Column */
+        .brand-column {
+            padding-right: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .footer-logo h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .footer-tagline {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(15, 76, 129, 0.2);
+        }
+
+        /* Links Columns */
+        .footer-column h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #404a57;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+            display: inline-block;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 15px;
+        }
+
+        .footer-links a:hover::before {
+            width: 10px;
+            opacity: 1;
+        }
+
+        /* Contact Column */
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-info li {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(15, 76, 129, 0.08);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .contact-text span,
+        .contact-text a {
+            display: block;
+            color: #404a57;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text a:hover {
+            color: var(--primary-color);
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 5px 15px;
+            align-items: center;
+        }
+
+
+        /* Bottom Footer */
+        .footer-bottom {
+            background-color: #1f2937;
+            padding: 25px 0;
+            color: #9ca3af;
+        }
+
+        .footer-bottom-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright p,
+        .developer-credit p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .developer-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .developer-link:hover {
+            color: white;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1200px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px 60px;
+            }
+            
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-main {
+                padding: 60px 0 40px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom-wrapper {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .footer-main{
+                padding: 40px 0;
+            }
+            
+            .premium-footer .container {
+                padding: 0 20px;
+            }
+            
+        }
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Animations */
+        .hero1 h1, .txt-up h1 {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .hero-inner h2, .txt-up h2 {
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .down-div, .serve, .txt-cont {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .btn, .nav-content3 a, .cont-div img, .inner img {
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1200px) {
+            .upper {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .cont-items {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .service-middle {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .cont-middle {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .nav {
+                padding: 15px 30px;
+            }
+            
+            .nav-content3 {
+                display: none;
+            }
+            
+            .menu-icon {
+                display: block;
+            }
+            
+            .hero2 {
+                flex-direction: column;
+            }
+            
+            .page2-end, .service-inner, .page5-down {
+                grid-template-columns: 1fr;
+            }
+            
+            .page3-down {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .upper {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .cont-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .service-middle {
+                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .serve {
+                padding: 25px;
+            }
+            
+            .serve h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-down {
+                flex-direction: column;
+            }
+            
+            .page3-down, .cont-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .cont-middle {
+                grid-template-columns: 1fr;
+            }
+            
+            .page6-up {
+                grid-template-columns: 1fr;
+            }
+            
+            .end-div, .end-div1, .inner1, .inner2 {
+                flex-direction: column;
+            }
+            
+            .inner1 .img, .inner2 .img, .end-div .inner1, .end-div1 .inner1 {
+                height: 250px;
+            }
+            .service-middle {
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .nav-content1 h1 {
+                font-size: 20px;
+            }
+            
+            .nav-content1 img {
+                height: 40px;
+            }
+            
+            
+            .upper {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero1 h1 {
+                font-size: 36px;
+            }
+            
+            .txt-up h1 {
+                font-size: 28px;
+            }
+            
+            .page4-inner .cont-up {
+                flex-direction: column;
+            }
+            
+            .txt-div h1 {
+                font-size: 20px;
+            }
+            
+            .page1-hero, .page2-up, .page2-end, .page3-up, .page3-down, .page3-end, .page4-inner, .service-inner, .service-middle, .page5-up, .cont-middle, .page5-down, .page6-inner {
+                padding: 0 20px;
+            }
+            
+            .service-middle {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+            
+            .serve {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 20px;
+            }
+            
+            .serve h1 {
+                font-size: 30px;
+                margin-bottom: 0;
+                margin-right: 15px;
+                min-width: 40px;
+            }
+            
+            .serve-content {
+                flex: 1;
+            }
+            
+            .serve h2 {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+            
+            .serve h3 {
+                font-size: 13px;
+                line-height: 1.4;
+                margin-bottom: 0;
+            }
+            
+            .service-heading h1 {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+    
+        }
+
+        .store-hours {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .store-hours::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 195, 74, 0.08) 0%, rgba(15, 76, 129, 0.03) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.2); opacity: 1; }
+        }
+
+        .store-hours-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hours-heading {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeDown 0.8s ease-out;
+        }
+
+        @keyframes fadeDown {
+            from { 
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hours-heading h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .hours-heading h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+            animation: expandWidth 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 80px; }
+        }
+
+        .hours-heading h2 {
+            font-size: 18px;
+            font-weight: 400;
+            color: #555;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hours-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hours-card {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        box-shadow 0.4s ease;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from { 
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hours-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .day-column, .time-column {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .day-column {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-column::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+            z-index: 1;
+            animation: rotate 15s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .day, .time {
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 16px;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeSlideIn 0.5s ease-out both;
+            animation-delay: calc(var(--item-index, 0) * 0.1s);
+        }
+
+        .day:nth-child(1), .time:nth-child(1) { --item-index: 1; }
+        .day:nth-child(2), .time:nth-child(2) { --item-index: 2; }
+        .day:nth-child(3), .time:nth-child(3) { --item-index: 3; }
+        .day:nth-child(4), .time:nth-child(4) { --item-index: 4; }
+        .day:nth-child(5), .time:nth-child(5) { --item-index: 5; }
+        .day:nth-child(6), .time:nth-child(6) { --item-index: 6; }
+        .day:nth-child(7), .time:nth-child(7) { --item-index: 7; }
+
+        @keyframes fadeSlideIn {
+            from { 
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .time {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .hours-card:hover .day, .hours-card:hover .time {
+            transform: translateX(5px);
+        }
+
+        .day.sunday, .time.sunday {
+            border-bottom: none;
+            font-weight: 700;
+        }
+
+        .holiday-notice {
+            background-color: white;
+            padding: 35px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            max-width: 320px;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                        box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .holiday-notice:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .holiday-notice h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 22px;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+            animation: fadeIn 0.6s ease-out 0.6s both;
+        }
+
+        .holiday-notice h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            animation: expandWidth 0.6s ease-out 0.8s both;
+        }
+
+        .holiday-notice p {
+            margin-bottom: 25px;
+            color: #555;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out 0.7s both;
+        }
+
+        .phone-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(15, 76, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out 0.9s both;
+        }
+
+        .phone-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-30deg);
+            transition: all 0.6s ease;
+        }
+
+        .phone-link:hover {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 76, 129, 0.5);
+        }
+
+        .phone-link:hover::before {
+            left: 200%;
+        }
+
+        .phone-link i {
+            font-size: 18px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .store-hours-inner {
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .hours-container {
+                gap: 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .store-hours {
+                padding: 60px 0;
+            }
+            
+            .hours-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hours-card, .holiday-notice {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .hours-heading h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .store-hours {
+                padding: 50px 0;
+            }
+            
+            .store-hours-inner {
+                padding: 0 20px;
+            }
+            
+            .hours-heading {
+                margin-bottom: 40px;
+            }
+            
+            .hours-heading h1 {
+                font-size: 28px;
+            }
+            
+            .hours-heading h2 {
+                font-size: 16px;
+            }
+            
+            .day-column, .time-column {
+                padding: 20px 15px;
+            }
+            
+            .day, .time {
+                padding: 12px 0;
+                font-size: 15px;
+            }
+            
+            .holiday-notice {
+                padding: 25px 20px;
+            }
+            
+            .holiday-notice h3 {
+                font-size: 20px;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .phone-link {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
+
+        /* Map */
+        .map {
+            background-color: #f5f7fa;
+            margin-bottom: 100px;
+            margin-top: 100px;
+        }
+
+        .map-container {
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-350px * 3));
+            }
+        }
+
+
+
+        .baby-care-section {
+        padding: 100px 0;
+        background: linear-gradient(to bottom, #F9FAFC 0%, #F5F7FA 100%);
+        position: relative;
+        overflow: hidden;
+        }
+
+        .baby-care-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+        height: 100%;
+        background: url('/api/placeholder/800/1200') no-repeat center right;
+        background-size: cover;
+        opacity: 0.04;
+        z-index: 1;
+        }
+
+        .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 30px;
+        position: relative;
+        z-index: 2;
+        }
+
+        .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 80px;
+        }
+
+        .section-subtitle {
+        display: inline-block;
+        background: rgba(10, 35, 66, 0.08);
+        color: var(--primary);
+        font-weight: 600;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-size: 14px;
+        margin-bottom: 20px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        }
+
+        .section-title {
+        font-size: 42px;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 20px;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        }
+
+        .section-description {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 15px;
+        }
+
+        .trusted-by {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 15px;
+        }
+
+        .trusted-label {
+        font-size: 14px;
+        color: #777;
+        margin-right: 5px;
+        }
+
+        .trusted-logos {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        }
+
+        .trusted-logo {
+        height: 30px;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+        }
+
+        .trusted-logo:hover {
+        opacity: 1;
+        }
+
+        .products-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 20px;
+        }
+
+        .product-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        }
+
+        .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-badge {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: var(--primary);
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 30px;
+        z-index: 2;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        }
+
+        .product-image {
+        position: relative;
+        height: 240px;
+        overflow: hidden;
+        }
+
+        .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+        transform: scale(1.1);
+        }
+
+        .product-image::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(to top, white, transparent);
+        }
+
+        .product-content {
+        padding: 25px;
+        }
+
+        .product-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        }
+
+        .product-category {
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 14px;
+        }
+
+        .product-rating {
+        display: flex;
+        align-items: center;
+        color: var(--secondary);
+        font-weight: 600;
+        font-size: 14px;
+        }
+
+        .product-rating svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        }
+
+        .product-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 15px;
+        line-height: 1.4;
+        }
+
+        
+
+        @media screen and (max-width: 1200px) {
+        .products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        }
+
+        @media screen and (max-width: 992px) {
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .section-title {
+            font-size: 36px;
+        }
+        }
+
+        @media screen and (max-width: 768px) {
+        .baby-care-section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            font-size: 32px;
+        }
+
+        .trusted-logos {
+            gap: 15px;
+        }
+
+        .trusted-logo {
+            height: 25px;
+        }
+        }
+
+        @media screen and (max-width: 576px) {
+        .products-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .section-title {
+            font-size: 28px;
+        }
+
+        .trusted-by {
+            flex-direction: column;
+        }
+    }
+        
+
+        .container {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .section-subheading {
+            display: inline-block;
+            background-color: rgba(30, 95, 116, 0.1);
+            color: var(--primary);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #8bc34a;
+            border-radius: 2px;
+        }
+
+        
+
+        .testimonials{
+            padding: 80px 0;
+        }
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        .testimonial-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-card {
+            width: 100%;
+            flex: 0 0 calc(33.333% - 1.5rem);
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px var(--shadow);
+            position: relative;
+            z-index: 3;
+            transition: var(--transition);
+            transform: translateY(0);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: calc(0.2s * var(--i));
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px var(--shadow-stronger);
+        }
+
+        
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--primary-light);
+            padding: 3px;
+            box-shadow: 0 5px 15px rgba(30, 95, 116, 0.2);
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .testimonial-author h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .testimonial-position {
+            color: var(--primary-light);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .testimonial-rating {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-text {
+            position: relative;
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2.5rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 4;
+            padding: 0 20px;
+        }
+
+        .arrow-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px var(--shadow);
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            pointer-events: auto;
+        }
+
+        .arrow-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .testimonial-container {
+                padding: 0 30px;
+            }
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .testimonials {
+                padding: 4rem 0;
+            }
+            .testimonial-container {
+                padding: 0 20px;
+            }
+            .section-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+
+        /* Payment & Insurance Section */
+        .payment-section {
+            padding: 80px 0;
+            background: linear-gradient(120deg, #f8f9fa 0%, #e9f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .payment-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-tagline {
+            display: inline-block;
+            background-color: rgba(139, 195, 74, 0.15);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .payment-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            padding: 40px;
+            transition: transform var(--transition-speed);
+            height: 100%;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(15, 76, 129, 0.1);
+            border-radius: 50%;
+            margin-bottom: 25px;
+        }
+
+        .card-icon i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .payment-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .payment-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+
+        .payment-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .emphasized {
+            font-weight: 700;
+        }
+
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-container {
+                padding: 0 30px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .payment-card {
+                padding: 30px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .payment-container {
+                padding: 0 20px;
+            }
+
+            .payment-card {
+                padding: 25px;
+            }
+
+            .card-title {
+                font-size: 20px;
+            }
+
+
+            .section-tagline {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+        }
+        /* Compact Emergency Banner */
+        .emergency-banner {
+            background-color: #ffebee;
+            padding: 12px 0;
+            border-bottom: 2px solid #ffcdd2;
+            position: relative;
+        }
+
+        .emergency-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .emergency-icon {
+            color: #d32f2f;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .emergency-text {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .emergency-text strong {
+            color: #d32f2f;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .emergency-call-btn {
+            background-color: #d32f2f;
+            color: white;
+            font-weight: 600;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .emergency-call-btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .emergency-container {
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .emergency-container {
+                padding: 0 20px;
+                flex-wrap: wrap;
+            }
+            
+            .emergency-text {
+                font-size: 14px;
+                text-align: center;
+                width: 100%;
+                order: 1;
+            }
+            
+            .emergency-icon {
+                order: 0;
+            }
+            
+            .emergency-call-btn {
+                order: 2;
+                margin-top: 8px;
+            }
+        }
+        /* Contact Section Styles */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(to right, #f8f9fa 50%, #e9f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-subheading {
+            display: inline-block;
+            background-color: rgba(139, 195, 74, 0.15);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            margin-bottom: 16px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .contact-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .contact-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+        .contact-cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-card {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: var(--box-shadow);
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        }
+
+        .contact-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(15, 76, 129, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .contact-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            margin-bottom: 10px;
+        }
+
+        .contact-info-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #777;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info-content {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .contact-info-content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info-content a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .phones-card .contact-info {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+
+        .phones-card .contact-info:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .address-details {
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center;
+            gap: 10px;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .address-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .address-icon {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-top: 3px;
+        }
+
+        .business-hours {
+            margin-top: 25px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .business-hours h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 14px;
+        }
+
+        .hours-day {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .contact-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .contact-card:last-child {
+                grid-column: span 2;
+                max-width: 600px;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-section {
+                padding: 70px 0;
+            }
+            
+            .contact-cards-container {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+            
+            .contact-card:last-child {
+                grid-column: span 1;
+            }
+            
+            .contact-heading {
+                font-size: 30px;
+            }
+        
+            
+            .container {
+                padding: 0 30px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .contact-section {
+                padding: 50px 0;
+            }
+            
+            .contact-card {
+                padding: 30px 20px;
+            }
+            
+            .contact-heading {
+                font-size: 26px;
+            }
+            
+            .contact-subheading {
+                font-size: 12px;
+            }
+            
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .contact-card h3 {
+                font-size: 20px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        .popup-main-content {
+            margin-top: 30px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: var(--box-shadow);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Overlay for popup */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            width: 90%;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .popup-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 30px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .popup-header h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform var(--transition-speed);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .popup-content {
+            padding: 30px;
+        }
+
+        .policy-section {
+            margin-bottom: 30px;
+        }
+
+        .policy-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .policy-section h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .policy-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        .policy-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+
+        .popup-contact-info {
+            background-color: var(--light-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .popup-contact-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .contact-method i {
+            color: var(--secondary-color);
+            margin-right: 10px;
+            font-size: 18px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .popup-footer {
+            background-color: var(--light-color);
+            padding: 20px 30px;
+            text-align: center;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-footer p {
+            color: var(--dark-color);
+            font-size: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border: none;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--box-shadow);
+        }
+
+        @media screen and (max-width: 768px) {
+            .popup-container {
+                width: 95%;
+                max-height: 80vh;
+            }
+
+            .popup-header h2 {
+                font-size: 20px;
+            }
+
+            .popup-content {
+                padding: 20px;
+            }
+
+            .policy-section h3 {
+                font-size: 18px;
+            }
+
+            .policy-section p {
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .popup-header {
+                padding: 15px 20px;
+            }
+
+            .popup-content {
+                padding: 15px;
+            }
+
+            .popup-footer {
+                padding: 15px 20px;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Promo Ad Section */
+.promo-ad {
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #5b9bd5;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.ad-banner {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background: #8bc34a;
+    color: #343a40;
+    transform: rotate(45deg);
+    padding: 5px 40px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.ad-info {
+    width: 100%;
+}
+
+.ad-tag {
+    display: inline-block;
+    background-color: rgba(232, 174, 66, 0.2);
+    color: #343a40;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.ad-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f4c81;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.ad-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.broker-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f4c81;
+    margin-bottom: 10px;
+}
+
+.broker-badge {
+    background: #0f4c81;
+    color: white;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.specialty-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.specialty-item {
+    background: rgba(30, 107, 78, 0.1);
+    color: #0f4c81;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.broker-contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-icon {
+    width: 30px;
+    height: 30px;
+    background: rgba(30, 107, 78, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0f4c81;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.contact-info {
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+    margin: 0;
+}
+
+.contact-info a {
+    color: #444;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #8bc34a;
+    color: #343a40;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-size: 14px;
+}
+
+.cta-button:hover {
+    background: #d19a30;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(232, 174, 66, 0.3);
+}
+
+.ad-disclaimer {
+    font-size: 10px;
+    color: #777;
+    text-align: right;
+    margin-top: 15px;
+    font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+    .broker-contact {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .specialty-list {
+        justify-content: flex-start;
+    }
+    
+    .ad-disclaimer {
+        text-align: center;
+    }
+}
+        
+        /*Google  Translate Banner */
+        .translate-banner {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 0;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .translate-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+        
+        .translate-message {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .translate-message i {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        .translate-selector {
+            position: relative;
+            width: 200px;
+        }
+        
+        /* Hide Google's default branding */
+        .goog-te-gadget {
+            font-family: var(--font-primary) !important;
+            font-size: 0px !important;
+            margin: 0 !important;
+        }
+        
+        .goog-te-gadget .goog-te-combo {
+            width: 100%;
+            margin: 0 !important;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: none;
+            color: var(--dark-color);
+            font-family: var(--font-primary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .goog-te-gadget .goog-te-combo:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Alternative: Flag buttons instead of dropdown */
+        .language-flags {
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-flag {
+            margin-left: 10px;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-flag:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+        
+        .language-flag img {
+            width: 22px;
+            height: 22px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .language-flag span {
+            margin-left: 5px;
+            font-size: 13px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .close-banner {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 0 0 15px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .close-banner:hover {
+            opacity: 1;
+        }
+        
+        /* Remove Google translate toolbar */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+        
+        body {
+            top: 0 !important;
+        }
+        
+        /* Push content down when banner is visible */
+        body.has-translate-banner .heading-nav {
+            margin-top: 41px; /* Adjust based on banner height */
+        }
+        
+        /* Responsive styling */
+        @media screen and (max-width: 992px) {
+            .translate-container {
+                padding: 0 30px;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .translate-container {
+                padding: 0 20px;
+            }
+            
+            .translate-message {
+                font-size: 13px;
+            }
+            
+            .language-flag span {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 576px) {
+            .translate-message span {
+                display: none;
+            }
+            
+            .translate-message i {
+                margin-right: 0;
+            }
+        }
+
+        /* Sanitization Products Section - Simplified */
+        .sanitization-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .sanitization-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .sanitization-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .sanitization-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .sanitization-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .sanitization-products {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
+
+        .sanitization-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sanitization-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sanitization-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .sanitization-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .sanitization-item:hover .sanitization-img img {
+            transform: scale(1.1);
+        }
+
+        .sanitization-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Surgical Support Items Section - Simplified */
+        .surgical-support-section {
+            padding: 80px 0;
+        }
+
+        .surgical-support-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .surgical-support-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .surgical-support-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .surgical-support-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
+
+        .surgical-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .surgical-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .surgical-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .surgical-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .surgical-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .surgical-item:hover .surgical-img img {
+            transform: scale(1.1);
+        }
+
+        .surgical-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .sanitization-products {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            .sanitization-products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .surgical-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .sanitization-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .sanitization-products {
+                grid-template-columns: 1fr;
+            }
+            
+            .surgical-items {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="main">
+        <!-- Translate Banner - Version 1: Google Dropdown with 4 Languages -->
+        <div class="has-translate-banner">
+            <div class="translate-banner" id="translateBanner">
+                <div class="translate-container">
+                    <div class="translate-message">
+                        <i class="fas fa-globe"></i>
+                        <span>Translate this page:</span>
+                    </div>
+                    <div class="translate-selector">
+                        <div id="google_translate_element"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="heading-nav">
+            <div class="nav">
+                <div class="nav-content1">
+                    <img src="./img/logo1.png" alt="Laguardia Pharmacy Logo">
+                </div>
+
+                <div class="menu-icon" onclick="openNav()">&#9776;</div> 
+
+                <div class="nav-content3">
+                    <a href="#">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#features">Features</a>
+                    <a href="#hours">Hours</a>
+                    <a href="https://goo.gl/maps/ke9MqZGYe9ku9Ltd6" target="_blank">Direction</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <!-- Sidebar Navigation -->
+                <div id="sidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
+                    <a href="#">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#features">Features</a>
+                    <a href="#hours">Hours</a>
+                    <a href="https://goo.gl/maps/ke9MqZGYe9ku9Ltd6" target="_blank">Direction</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modern Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="hero-tagline">Your Trusted Neighborhood Pharmacy</span>
+                    <h1 class="hero-title">Laguardia Pharmacy</h1>
+                    <p class="hero-description">
+                        At Laguardia Pharmacy, we're known for our friendly service, helpful advice, and genuine care. Stop by and experience pharmacy care with a personal touch.
+                        From everyday needs to thoughtful guidance, we're here when you need us most.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#services" class="primary-btn">Our Services</a>
+                        <a href="#contact" class="secondary-btn">Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-wrapper">
+                    <img src="https://plus.unsplash.com/premium_photo-1661776255948-7a76baa9d7b9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDF8fHBoYXJtYWN5fGVufDB8fDB8fHww" alt="Pharmacy Professional">
+                    </div>
+                    <div class="trust-badge">
+                    <div class="badge-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="badge-text">
+                        <span>Years of</span>
+                        <p>Trusted Service</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Compact Emergency Call Banner -->
+        <div class="emergency-banner">
+            <div class="emergency-container">
+                <div class="emergency-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <p class="emergency-text">In Case of Emergency: <strong>Call 911</strong></p>
+                <a href="tel:911" class="emergency-call-btn">Call Now</a>
+            </div>
+        </div>
+        
+
+        <div class="page2" id="products">
+            <div class="page2-end">
+                <div class="end-div">
+                    <div class="inner">
+                        <h3>🩺 Expert Medical Consultation</h3>
+                        <p>Good health starts with informed decisions. Our pharmacists provide professional guidance on medications and health concerns to support your wellness journey.</p>
+                        
+                    </div>
+                    <div class="inner1">
+                        <img src="img/patient_counseling.png" alt="Medical Consultation">
+                    </div>
+                </div>
+                <div class="end-div1">
+                    <div class="inner">
+                        <h3>📋 Prescription Management</h3>
+                        <p>Need a refill or consultation? Our streamlined process makes managing your prescriptions effortless.</p>
+                        
+                    </div>
+                    <div class="inner1">
+                        <img src="https://images.unsplash.com/photo-1626351543430-23d7f5609535?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fFByZXNjcmlwdGlvbnxlbnwwfHwwfHx8MA%3D%3D" alt="Prescription Management">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page4-services" id="services">
+            <div class="service-heading">
+                <div class="section-header">
+                    <h2 class="section-title">Discover Our Services</h2>
+                    <p class="section-description">Your One-Stop Solution for Convenience and Quality</p>
+                </div>
+            </div>
+        
+            <div class="service-middle">
+                <div class="serve">
+                    <h1>🚚</h1>
+                    <div class="serve-content">
+                        <h2>Free Prescription Delivery</h2>
+                        <h3>Enjoy the convenience of getting your medications delivered straight to your doorstep at no extra cost. Fast, free, and hassle-free service.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>👁️</h1>
+                    <div class="serve-content">
+                        <h2>DMV Eye Test</h2>
+                        <h3>Get your DMV eye test done quickly and easily with our certified professionals for accurate vision screening for driver's license renewal.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>📦</h1>
+                    <div class="serve-content">
+                        <h2>UPS Access Point</h2>
+                        <h3>Pick up or drop off your packages with ease at our convenient UPS Access Point. No more missed deliveries—secure and flexible.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>💸</h1>
+                    <div class="serve-content">
+                        <h2>Ria Bill Payment</h2>
+                        <h3>Pay your bills quickly and securely with Ria Bill Payment services for utilities, phone, and other essential services.</h3>
+                    </div>
+                </div>
+        
+                <div class="serve">
+                    <h1>📷</h1>
+                    <div class="serve-content">
+                        <h2>Passport Photos</h2>
+                        <h3>Get professional passport photos taken in minutes with free passport application service when you get your photos with us.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🖋️</h1>
+                    <div class="serve-content">
+                        <h2>Notary Public</h2>
+                        <h3>Our certified Notary Public services are fast, reliable, and available when you need important documents notarized.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🎁</h1>
+                    <div class="serve-content">
+                        <h2>Premium Gift Cards</h2>
+                        <h3>Choose from a wide selection of gift cards from popular retailers including Amazon, Walmart, Steam, and many more.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🖨️</h1>
+                    <div class="serve-content">
+                        <h2>Copy, Print, Scan, Fax</h2>
+                        <h3>Complete business center services including high-quality photocopying, printing, faxing, and document scanning.</h3>
+                    </div>
+                </div>
+        
+                <div class="serve">
+                    <h1>🏧</h1>
+                    <div class="serve-content">
+                        <h2>ATM Service</h2>
+                        <h3>Access cash easily with our on-site ATM service with minimal transaction fees of only 99 cents per withdrawal.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🔑</h1>
+                    <div class="serve-content">
+                        <h2>Precision Key Duplication</h2>
+                        <h3>We create precise copies of your keys with a full money-back guarantee if you're not completely satisfied with our service.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🎈</h1>
+                    <div class="serve-content">
+                        <h2>Helium Balloon Service</h2>
+                        <h3>Enhance your celebrations with our premium helium gas service for balloons, perfect for parties and special occasions.</h3>
+                    </div>
+                </div>
+                <div class="serve">
+                    <h1>🎰</h1>
+                    <div class="serve-content">
+                        <h2>New York Lottery</h2>
+                        <h3>Convenient access to New York Lottery games including scratch-offs and daily draws—try your luck today!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page4-services" id="features">
+            <div class="service-heading">
+                <h1>Free Services for Your Health <br>and Well-being</h1>
+            </div>
+            <div class="service-inner">
+                <div class="inner1">
+                    <div class="text">
+                        <h1>Covid-19 Home Test Kit</h1>
+                        <h2>Protect yourself and loved ones with FREE COVID-19 home test kits. Get yours today at our pharmacy!</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/covid_testkit.jpg" alt="Covid-19 Home Test Kit">
+                    </div>
+                </div>
+                <div class="inner2">
+                    <div class="text">
+                        <h1>Flu Shot</h1>
+                        <h2>Stay Healthy This Flu Season - Get Your Flu Shot at Laguardia Pharmacy Today!</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/flu_shot.jpg" alt="Flu Shot">
+                    </div>
+                </div>
+                <div class="inner1">
+                    <div class="text">
+                        <h1>Covid Vaccine</h1>
+                        <h2>Stay Healthy, Stay Safe - Covid Vaccine only available through appointment at Laguardia Pharmacy.</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/covid-vaccine.jpg" alt="Covid Vaccine">
+                    </div>
+                </div>
+                <div class="inner2">
+                    <div class="text">
+                        <h1>Sugar Test</h1>
+                        <h2>Discover a Sweet Deal on Your Health - FREE Sugar Test at Our Pharmacy! Book Your Appointment Today!</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/Sugar_test.jpg" alt="Sugar Test">
+                    </div>
+                </div>
+                <div class="inner1">
+                    <div class="text">
+                        <h1>Blood Pressure Check</h1>
+                        <h2>Prioritize Your Heart Health - FREE Blood Pressure Test at Our Pharmacy Today! Take Control Now</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/blood_pressure_test.jpg" alt="Blood Pressure Check">
+                    </div>
+                </div>
+                <div class="inner2">
+                    <div class="text">
+                        <h1>Patient Counseling</h1>
+                        <h2>Get personalized health advice and medication guidance from our expert pharmacist consultants. Visit us today!</h2>
+                    </div>
+                    <div class="img">
+                        <img src="img/patient_counseling.png" alt="Patient Counseling">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page3">
+            <div class="page3-up">
+                <div class="txt-up">
+                    <h1>Health Care Categories</h1>
+                </div>
+            </div>
+            
+            <div class="page2" id="products">
+                <div class="page2-up">
+                    <div class="upper">
+                        <div class="inner">
+                            <img src="./img/femine_health.png" alt="Feminine Health">
+                            <h2>Feminine Health</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/child_health.jpg" alt="Children's Health">
+                            <h2>Children's Health</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/first_aid2.jpg" alt="First Aid Essentials">
+                            <h2>First Aid Essentials</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="https://media.istockphoto.com/id/1796947698/photo/doctor-connecting-continuous-glucose-monitor-with-smartphone-to-check-blood-sugar-level-in.webp?a=1&b=1&s=612x612&w=0&k=20&c=3QTtX2TRPUPkPMhppNaTTdSR-fAn7n46ib20tPfLdEk=" alt="Diabetes care">
+                            <h2>Diabetes Care</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/eye_care.png" alt="Eye care">
+                            <h2>Eye Care</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/foot_care.jpg" alt="Bone & Joint care">
+                            <h2>Foot Care</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/ear_care.png" alt="Ear Care">
+                            <h2>Ear Care</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/sleep_aid.png" alt="Sleep Aids & Relaxation">
+                            <h2>Sleep Aids & Relaxation</h2>
+                        </div>
+                        <div class="inner">
+                            <img src="./img/vitamins.jpg" alt="Vitamin Supplements">
+                            <h2>Vitamin Supplements</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page3">
+            <div class="page3-up">
+                <div class="txt-up">
+                    <h1>Everyday Health Relief</h1>
+                </div>
+            </div>
+            
+            <div class="page3-down">
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Headache & Migraine Relief</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Headache & Migraine Relief">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Cold & Flu Relief</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Cold & Flu">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Pain Relief</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Pain Relief">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Allergy Relief</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Allergy Relief">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Itch, Rash & Infection Relief</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Itch, Rash & Infection Relief">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page3">
+            <div class="page3-up">
+                <div class="txt-up">
+                    <h1>Personal Care Products</h1>
+                </div>
+            </div>
+            
+            <div class="page3-down">
+                <div class="cont">
+                    <div class="cont-txt">
+                        <h1>Bath & Body Care</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="img/maternal_health.jpg" alt="Feminie Health & Comfort">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Hair Care</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Headache & Migraine">
+                    </div>
+                </div>
+                <div class="cont2">
+                    <div class="cont-txt">
+                        <h1>Skin Care</h1>
+                    </div>
+                    <div class="cont-img">
+                        <img src="" alt="Cold & Flu">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sanitization Products Section -->
+        <section class="sanitization-section">
+            <div class="sanitization-container">
+                <div class="sanitization-header">
+                    <h2>Sanitization & PPE Products</h2>
+                </div>
+                
+                <div class="sanitization-products">
+                    <!-- Surgical Gloves -->
+                    <div class="sanitization-item">
+                        <div class="sanitization-img">
+                            <img src="/api/placeholder/400/320" alt="Surgical Gloves">
+                        </div>
+                        <div class="sanitization-title">Surgical Gloves</div>
+                    </div>
+                    
+                    <!-- Hydrogen Peroxide -->
+                    <div class="sanitization-item">
+                        <div class="sanitization-img">
+                            <img src="/api/placeholder/400/320" alt="Hydrogen Peroxide">
+                        </div>
+                        <div class="sanitization-title">Hydrogen Peroxide</div>
+                    </div>
+                    
+                    <!-- Isopropyl Alcohol -->
+                    <div class="sanitization-item">
+                        <div class="sanitization-img">
+                            <img src="/api/placeholder/400/320" alt="Isopropyl Alcohol">
+                        </div>
+                        <div class="sanitization-title">Isopropyl Alcohol</div>
+                    </div>
+                    
+                    <!-- Hand Sanitizer -->
+                    <div class="sanitization-item">
+                        <div class="sanitization-img">
+                            <img src="/api/placeholder/400/320" alt="Hand Sanitizer">
+                        </div>
+                        <div class="sanitization-title">Hand Sanitizer</div>
+                    </div>
+                    
+                    <!-- Face Masks -->
+                    <div class="sanitization-item">
+                        <div class="sanitization-img">
+                            <img src="/api/placeholder/400/320" alt="Face Masks">
+                        </div>
+                        <div class="sanitization-title">Medical Face Masks</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Surgical Support Items Section -->
+        <section class="surgical-support-section">
+            <div class="surgical-support-container">
+                <div class="surgical-support-header">
+                    <h2>Medical Support Equipment</h2>
+                </div>
+                
+                <div class="surgical-items">
+                    <!-- Wheelchair -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Wheelchair">
+                        </div>
+                        <div class="surgical-title">Wheelchair</div>
+                    </div>
+                    
+                    <!-- Walking Cane -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Walking Cane">
+                        </div>
+                        <div class="surgical-title">Walking Cane</div>
+                    </div>
+                    
+                    <!-- Walking Support -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Walking Support">
+                        </div>
+                        <div class="surgical-title">Medical Walker</div>
+                    </div>
+                    
+                    <!-- Leg Support -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Leg Support">
+                        </div>
+                        <div class="surgical-title">Knee Brace</div>
+                    </div>
+                    
+                    <!-- Back Support -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Back Support">
+                        </div>
+                        <div class="surgical-title">Lumbar Support</div>
+                    </div>
+                    
+                    <!-- Arm Sling -->
+                    <div class="surgical-item">
+                        <div class="surgical-img">
+                            <img src="/api/placeholder/400/320" alt="Arm Sling">
+                        </div>
+                        <div class="surgical-title">Arm Sling</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="baby-care-section">
+            <div class="container">
+              <div class="section-header">
+                <h2 class="section-title">Premium Baby Care Collection</h2>
+                <p class="section-description">Discover our specially curated range of premium baby care products, made with the finest ingredients and formulated by pharmaceutical experts to ensure your baby's health and comfort.</p>
+              </div>
+        
+              <div class="products-grid">
+                <!-- First Product -->
+                <div class="product-card">
+                  <span class="product-badge">Best Seller</span>
+                  <div class="product-image">
+                    <img src="/api/placeholder/350/350" alt="Premium Baby Diapers">
+                  </div>
+                  <div class="product-content">
+                    <div class="product-meta">
+                      <span class="product-category">Nutrition</span>
+                    </div>
+                    <h3 class="product-title">Advanced-Protection Premium Baby Diapers</h3>
+                    
+                  </div>
+                </div>
+        
+                <!-- Second Product -->
+                <div class="product-card">
+                  <span class="product-badge">Organic</span>
+                  <div class="product-image">
+                    <img src="/api/placeholder/350/350" alt="Organic Baby Food">
+                  </div>
+                  <div class="product-content">
+                    <div class="product-meta">
+                      <span class="product-category">Wellness</span>
+                    </div>
+                    <h3 class="product-title">Certified Organic Baby Food Collection</h3>
+                    
+                  </div>
+                </div>
+        
+                <!-- Third Product -->
+                <div class="product-card">
+                  <span class="product-badge">Premium</span>
+                  <div class="product-image">
+                    <img src="/api/placeholder/350/350" alt="Premium Infant Formula">
+                  </div>
+                  <div class="product-content">
+                    <div class="product-meta">
+                      <span class="product-category">Nutrition</span>
+                    </div>
+                    <h3 class="product-title">Advanced Nutrition Infant Formula</h3>
+                    
+                  </div>
+                </div>
+        
+                <!-- Fourth Product -->
+                <div class="product-card">
+                  <span class="product-badge">Specialty</span>
+                  <div class="product-image">
+                    <img src="./img/Hypoallergenic_Baby_Formula.webp" alt="Specialty Formula">
+                  </div>
+                  <div class="product-content">
+                    <div class="product-meta">
+                      <span class="product-category">Healthcare</span>
+                    </div>
+                    <h3 class="product-title">Hypoallergenic Specialty Baby Formula</h3>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+        
+
+        <section class="payment-section">
+            <div class="payment-container">
+                <div class="section-header">
+                    <h2 class="section-title">Insurance & Payment Options</h2>
+                    <p class="section-description">At our pharmacy, we strive to make healthcare accessible to everyone. We accept a wide range of insurance plans and payment methods to ensure you receive the care you need without hassle.</p>
+                </div>
+    
+                <div class="payment-options">
+                    <div class="payment-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title">Accepted Insurance Plans</h3>
+                        <ul class="payment-list">
+                            <li><span class="emphasized">Medicare</span> &nbsp;- Parts A, B, C & D</li>
+                            <li><span class="emphasized">Medicaid</span> &nbsp;- All state plans accepted</li>
+                            <li><span class="emphasized">CVS Caremark</span> &nbsp;- All plans accepted</li>
+                            <li><span class="emphasized">Blue Cross Blue Shield</span></li>
+                            <li><span class="emphasized">United Healthcare</span></li>
+                            <li><span class="emphasized">Aetna</span></li>
+                            <li><span class="emphasized">Cigna</span></li>
+                            <li><span class="emphasized">Humana</span></li>
+                        </ul>
+                    </div>
+    
+                    <div class="payment-card">
+                        <div class="card-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 class="card-title">Payment Methods</h3>
+                        <ul class="payment-list">
+                            <li><span class="emphasized">Cash</span> &nbsp;payments accepted</li>
+                            <li><span class="emphasized">Credit Cards</span> &nbsp;- Visa, MasterCard, American Express, Discover</li>
+                            <li><span class="emphasized">Debit Cards</span> &nbsp;- All major cards accepted</li>
+                            <li><span class="emphasized">Mobile Payments</span> &nbsp;- Apple Pay, Google Pay, Samsung Pay</li>
+                            <li><span class="emphasized">WIC</span> &nbsp;checks accepted</li>
+                            <li><span class="emphasized">OTC card</span> &nbsp;for eligible items</li>
+                            <li><span class="emphasized">Benefit card</span> &nbsp;eligible purchases</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="promo-ad">
+                <div class="ad-banner">Sponsored</div>
+                <div class="promo-content">
+                    <div class="ad-info">
+                        <span class="ad-tag">ADVERTISEMENT</span>
+                        <h3 class="ad-title">Save on your prescription medications!</h3>
+                        <h2 class="broker-name">Jennifer Mendoza</h2>
+                        <span class="broker-badge">Licensed Insurance Broker</span>
+                        <p class="ad-description">Let me help you find the right insurance plan that covers your medications at the best rates. I specialize in healthcare coverage options for pharmacy customers.</p>
+                        
+                        <div class="specialty-list">
+                            <span class="specialty-item">Medicare Advantage</span>
+                            <span class="specialty-item">Medicare Supplement</span>
+                            <span class="specialty-item">Life/Final Expense</span>
+                            <span class="specialty-item">Commercial/Small Group</span>
+                            <span class="specialty-item">Essential Plans</span>
+                        </div>
+                        
+                        <div class="broker-contact">
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <p class="contact-info"><a href="tel:8452835794">845-283-5794</a></p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <p class="contact-info"><a href="mailto:jennifermendoza0720@gmail.com">jennifermendoza0720@gmail.com</a></p>
+                            </div>
+                            <a href="#" class="cta-button">Free Consultation</a>
+                        </div>
+                    </div>
+                </div>
+                <p class="ad-disclaimer">This is a promotional advertisement. Jennifer Mendoza is not affiliated with this pharmacy.</p>
+            </div>
+        </section>
+
+        
+
+
+        <!-- Testimonials -->
+        <section class="testimonials section" id="testimonials">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>What Our Customers Say</h2>
+                    <p>Discover why our customers trust us for their healthcare needs.</p>
+                    <a href="https://search.google.com/local/reviews?placeid=ChIJGQIJ5ZRfwokRchHk8FObr3E&q=Laguardia+Pharmacy&hl=en&gl=US" target="_blank"
+                        style="
+                            display: inline-block;
+                            padding: 12px 25px;
+                            background-color: var(--primary-color);
+                            color: white;
+                            border-radius: 5px;
+                            font-weight: 600;
+                            align-self: flex-start;
+                            transition: all var(--transition-speed);
+                            margin-top: 20px;">Check more reviews on Google
+                    </a>
+                </div>
+            
+                <div class="testimonial-container">
+                    <div class="testimonial-slider">
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">5 months ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">I can't say enough good things about this pharmacy. 
+                                The team is always welcoming and ready to help. They genuinely care about their customers and take the time to provide personalized advice. 
+                                I appreciate their quick service and the convenience of their location. 
+                                It's a great feeling to know I can rely on them for all my pharmacy needs…</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">5 months ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"I had a fantastic experience at LaGuardia pharmacy! 
+                                The staff were incredibly knowledgeable and friendly, making the entire process seamless. 
+                                They took the time to answer all my questions and provided helpful recommendations. 
+                                I highly recommend this pharmacy for their excellent customer service and commitment to patient care!"</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">5 months ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="testimonial-text">I really liked my visit to LaGuardia Pharmacy. 
+                                The employees were helpful and quick, and I got my prescription fast. 
+                                The place was tidy, and I felt well taken care of. I'd definitely go back!!</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">4 months ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">Best neighborhood pharmacy and they offer many services i love it</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">5 months ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">Manager and stuffs are very good. They are very proficient and fast.</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="testimonial-header">
+                
+                                <div class="testimonial-author">
+                                    <h4>Happy Customer</h4>
+                                    <span class="testimonial-position">1 year ago</span>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">Very kind and professional. Here the employees the lady manager and owner all are very helpful nice. 
+                                The medicine can be delivered on time at home. 
+                                The quality is upmost the same as big CVS & Walgreens like pharmacies.
+                                Suggest to try this neighborhood pharmacy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Store Hours Section -->
+        <div class="store-hours" id="hours">
+            <div class="store-hours-inner">
+                <div class="hours-heading">
+                    <h1>Store Hours</h1>
+                    <h2>Visit us at your convenience</h2>
+                </div>
+                <div class="hours-container">
+                    <div class="hours-card">
+                        <div class="day-column">
+                            <div class="day">Monday</div>
+                            <div class="day">Tuesday</div>
+                            <div class="day">Wednesday</div>
+                            <div class="day">Thursday</div>
+                            <div class="day">Friday</div>
+                            <div class="day">Saturday</div>
+                            <div class="day sunday">Sunday</div>
+                        </div>
+                        <div class="time-column">
+                            <div class="time">9:00 AM - 6:45 PM</div>
+                            <div class="time">9:00 AM - 6:45 PM</div>
+                            <div class="time">9:00 AM - 6:45 PM</div>
+                            <div class="time">9:00 AM - 6:45 PM</div>
+                            <div class="time">9:00 AM - 6:45 PM</div>
+                            <div class="time">9:00 AM - 5:45 PM</div>
+                            <div class="time">9:00 AM - 2:30 PM</div>
+                            <!--
+                            <div class="time sunday">Closed</div>-->
+                        </div>
+                    </div>
+                    <div class="holiday-notice">
+                        <h3>Holiday Hours</h3>
+                        <p>Hours may vary on holidays. Please call ahead to confirm our schedule for special days and events.</p>
+                        <a href="tel:+13476490996" class="phone-link">
+                            <i class="fa-solid fa-phone"></i> +1 (718) 478-2576
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Map Section -->
+            <section class="map section-sm">
+                <div class="container">
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.0239559776114!2d-73.87011832352842!3d40.761497834583174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25f94e5090219%3A0x71af9b53f0e41172!2sLaguardia%20Pharmacy!5e0!3m2!1sen!2sus!4v1688759432387!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="contact-header">
+                    <h2 class="contact-heading">Contact Information</h2>
+                </div>
+                
+                <div class="contact-cards-container">
+                    <!-- Phone Numbers Card -->
+                    <div class="contact-card phones-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        
+                        <div class="contact-info">
+                            <p class="contact-info-content">
+                                <a href="tel:3476490996">+1 (347) 649-09960</a>
+                            </p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <p class="contact-info-content">
+                                <a href="tel:7184765660">+1 (718) 476-5660</a>
+                            </p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <p class="contact-info-content">
+                                <a href="tel:7184782576">+1 (718) 478-2576</a>
+                            </p>
+                        </div>
+                        
+                        <a href="tel:7184782576" class="contact-btn">
+                            <i class="fas fa-phone-alt"></i>&nbsp; Call Now
+                        </a>
+                    </div>
+                    
+                    <!-- Email Card -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        
+                        <div class="contact-info">
+                            <div class="contact-info-title">Email Us</div>
+                            <p class="contact-info-content">
+                                <a href="mailto:laguardiapharmacy101@gmail.com">laguardiapharmacy101@gmail.com</a>
+                            </p>
+                        </div>
+                        
+                        <a href="mailto:laguardiapharmacy101@gmail.com" class="contact-btn">
+                            <i class="fas fa-envelope"></i>&nbsp; Email Us
+                        </a>
+                    </div>
+                    
+                    <!-- Location Card -->
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Visit Us</h3>
+                        
+                        <div class="address-details">
+                            <div class="address-item">
+                                <span class="address-icon">
+                                    <i class="fas fa-building"></i>
+                                </span>
+                                <p class="contact-info-content">
+                                    101-22 Astoria Boulevard,<br>
+                                    East Elmhurst, NY 11369
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <a href="https://goo.gl/maps/ke9MqZGYe9ku9Ltd6" target="_blank" target="_blank" class="contact-btn">
+                            <i class="fas fa-directions"></i>&nbsp; Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+  
+
+        <!-- Elegant Footer for Premium Pharmacy -->
+        <footer class="premium-footer">
+            <!-- Upper Footer Section -->
+            <div class="footer-main">
+                <div class="container">
+                    <div class="footer-grid">
+                        <!-- Column 1: Brand & About -->
+                        <div class="footer-column brand-column">
+                            <div class="footer-logo">
+                                <img src="img/logo1.png" alt="Laguardia Pharmacy Logo">
+                                <h2>LAGUARDIA PHARMACY</h2>
+                            </div>
+                            <p class="footer-tagline">Your Trusted Neighborhood Pharmacy</p>
+                            <p class="footer-description">Providing exceptional pharmaceutical care and personalized service to our community with a commitment to your health and wellbeing.</p>
+                        </div>
+                        
+                        <!-- Column 2: Quick Links -->
+                        <div class="footer-column links-column">
+                            <h3>Quick Links</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#features">Features</a></li>
+                                <li><a href="#hours">Store Hours</a></li>
+                                <li><a href="#testimonials">Testimonials</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 3: Our Services -->
+                        <div class="footer-column services-column">
+                            <h3>Our Services</h3>
+                            <ul class="footer-links">
+                                <li><a href="#services">Free Delivery</a></li>
+                                <li><a href="#services">DMV Eye Testing</a></li>
+                                <li><a href="#services">Notary Public</a></li>
+                                <li><a href="#services">UPS Access Point</a></li>
+                                <li><a href="#services">Many More...</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Column 4: Contact Information -->
+                        <div class="footer-column contact-column">
+                            <h3>Contact Us</h3>
+                            <ul class="contact-info">
+                                <li>
+                                    <div class="contact-text">
+                                        <span>101-22 Astoria Boulevard</span>
+                                        <span>East Elmhurst, NY 11369</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-text">
+                                        <a href="tel:7184782576">(718) 478-2576</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-text">
+                                        <a href="mailto:laguardiapharmacy101@gmail.com">laguardiapharmacy101@gmail.com</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="contact-text hours-grid">
+                                        <span>Monday - Friday:</span>
+                                        <span>9am - 6:45pm</span>
+                                        <span>Saturday:</span>
+                                        <span>10am - 5:45pm</span>
+                                        <span>Sunday:</span>
+                                        <span>10am - 2:45pm</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-wrapper">
+                        <div class="copyright">
+                            <p>&copy; <span id="current-year">2025</span> Laguardia Pharmacy. All Rights Reserved.</p>
+                        </div>
+                        <div class="developer-credit">
+                            <p>Designed & Developed by <a href="mailto:ashaarav8920@gmail.com" class="developer-link">Ashish</a></p>
+                        </div>
+                        <div class="footer-legal">
+                            <a href="#" id="privacy-link">Privacy Policy & Terms of Service</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        <!-- Popup Overlay -->
+        <div class="overlay" id="policyOverlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Privacy Policy & Terms of Service</h2>
+                    <button class="close-btn" id="closePopup">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="popup-content">
+                    <div class="policy-section">
+                        <h3>Privacy Policy</h3>
+                        <p>Welcome to our website. We respect your privacy. This website is designed to be simple, secure, and privacy-friendly.</p>
+                        
+                        <p><strong>Information We Don't Collect</strong></p>
+                        <p>We want to be clear about our practices:</p>
+                        <ul>
+                            <li>We do not collect any personal information from visitors to our website.</li>
+                            <li>We do not use cookies or similar tracking technologies.</li>
+                            <li>We do not use analytics tools that collect user data.</li>
+                            <li>We do not store or process any visitor information on our servers.</li>
+                            <li>We do not share any information with third parties because we don't collect any.</li>
+                        </ul>
+                        
+                        <p>Our website is designed to provide information without requiring any personal data from you. You can browse our site anonymously without concerns about data collection or tracking.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3>Terms of Service</h3>
+                        <p>By accessing or using our website, you agree to these terms. If you disagree with any part of the terms, you may not access the website.</p>
+                        
+                        <p><strong>Intellectual Property</strong></p>
+                        <p>All content on this website — including text, images, graphics, and code — is either owned by us or licensed for use. It is protected by applicable copyright and intellectual property laws.</p>
+                        
+                        <p><strong>Use of Content</strong></p>
+                        <ul>
+                            <li>You are welcome to view, read, and share the content for personal, non-commercial use.</li>
+                            <li>You may not modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell any information or content obtained from this website without our prior written permission.</li>
+                            <li>For inquiries regarding the use of code, photos, or other content from our website, please contact us using the information provided below.</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-section">
+                        <h3>Content Attribution</h3>
+                        <ul>
+                            <li>All images used on this website are AI-generated.</li>
+                            <li>Code used in the creation of this website was generated with the assistance of Claude AI, an artificial intelligence tool by Anthropic.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3>Content & Asset Usage</h3>
+                        <p>If you have any questions regarding the use of our code, images, or other materials — especially for reuse, attribution, or licensing — feel free to contact us.:</p>
+                        
+                        <div class="popup-contact-info">
+                            <h4>Get In Touch</h4>
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <span>mrsaini281@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="popup-footer">
+                    <p>By using our website, you acknowledge that you have read and understood our Privacy Policy and Terms of Service.</p>
+                    <button class="btn" id="acceptBtn">I Understand</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        // Navigation sidebar functions
+        function openNav() {
+            document.getElementById("sidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("sidebar").style.width = "0";
+        }
+
+        // Smooth scroll for navigation links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-content3 a, #sidebar a');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href.startsWith('#') && href !== '#') {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        
+                        if (targetElement) {
+                            const offsetTop = targetElement.offsetTop;
+                            window.scrollTo({
+                                top: offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Close the sidebar on mobile if it's open
+                            closeNav();
+                        }
+                    }
+                });
+            });
+        });
+
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.inner, .down-div, .serve, .txt-cont, .cont, .cont1, .cont2, .end-div, .end-div1');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state
+            const elements = document.querySelectorAll('.inner, .down-div, .serve, .txt-cont, .cont, .cont1, .cont2, .end-div, .end-div1');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Trigger on page load
+            animateOnScroll();
+            
+            // Trigger on scroll
+            window.addEventListener('scroll', animateOnScroll);
+        });
+        
+        // Current year for copyright
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearElement = document.querySelector('.page6-end h2');
+            if (yearElement) {
+                const currentYear = new Date().getFullYear();
+                yearElement.innerHTML = `&copy; ${currentYear} Laguardia Pharmacy. All Rights Reserved.`;
+            }
+        });
+        
+        // Image lazy loading
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img');
+            
+            const lazyLoadImage = function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            };
+            
+            const imageObserver = new IntersectionObserver(lazyLoadImage, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            images.forEach(image => {
+                if (image.src) {
+                    image.dataset.src = image.src;
+                    image.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1"%3E%3C/svg%3E';
+                    imageObserver.observe(image);
+                }
+            });
+        });
+        
+        // Service hover effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const services = document.querySelectorAll('.serve');
+            
+            services.forEach(service => {
+                service.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                service.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Testimonial Slider Pause on Hover
+        const testimonialSlider = document.querySelector('.testimonial-slider');
+        
+        if (testimonialSlider) {
+            testimonialSlider.addEventListener('mouseenter', () => {
+                testimonialSlider.style.animationPlayState = 'paused';
+            });
+            
+            testimonialSlider.addEventListener('mouseleave', () => {
+                testimonialSlider.style.animationPlayState = 'running';
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+    </script>
+    <script>
+        // Show popup when privacy link is clicked
+        document.getElementById('privacy-link').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            document.getElementById('policyOverlay').style.display = 'flex';
+        });
+        
+        // Close popup when close button is clicked
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('policyOverlay').style.display = 'none';
+        });
+        
+        // Close popup when accept button is clicked
+        document.getElementById('acceptBtn').addEventListener('click', function() {
+            document.getElementById('policyOverlay').style.display = 'none';
+        });
+        
+        // Close popup when clicking outside the popup
+        document.getElementById('policyOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+    
+    <!-- JavaScript for Mobile Menu and Translate Banner -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+        
+        function closeSidebar() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+        
+        // For flag-based version
+        function changeLanguage(langCode) {
+            // This functions with Google Translate API
+            var select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = langCode;
+                select.dispatchEvent(new Event('change'));
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Banner close functionality
+            const closeBanner = document.getElementById('closeBanner');
+            const translateBanner = document.getElementById('translateBanner');
+            
+            if (closeBanner && translateBanner) {
+                closeBanner.addEventListener('click', function() {
+                    translateBanner.style.display = 'none';
+                    document.body.classList.remove('has-translate-banner');
+                    
+                    // Store preference in localStorage
+                    localStorage.setItem('translateBannerClosed', 'true');
+                });
+                
+                // Check if user has previously closed the banner
+                if (localStorage.getItem('translateBannerClosed') === 'true') {
+                    translateBanner.style.display = 'none';
+                    document.body.classList.remove('has-translate-banner');
+                }
+            }
+            
+            // Add button to show the banner again (optional)
+            const createShowBannerButton = function() {
+                if (localStorage.getItem('translateBannerClosed') === 'true') {
+                    const showButton = document.createElement('button');
+                    showButton.innerHTML = '<i class="fas fa-globe"></i>';
+                    showButton.className = 'show-translate-banner';
+                    showButton.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        background-color: var(--primary-color);
+                        color: white;
+                        border: none;
+                        box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        z-index: 999;
+                    `;
+                    
+                    showButton.addEventListener('click', function() {
+                        translateBanner.style.display = 'block';
+                        document.body.classList.add('has-translate-banner');
+                        localStorage.removeItem('translateBannerClosed');
+                        this.remove();
+                    });
+                    
+                    document.body.appendChild(showButton);
+                }
+            };
+            
+            // Create show banner button if banner was closed
+            setTimeout(createShowBannerButton, 100);
+        });
+    </script>
+    
+    <!-- Font Awesome for Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    
+</body>
+</html>
