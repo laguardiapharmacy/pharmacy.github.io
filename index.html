@@ -3938,40 +3938,118 @@
         grid-template-columns: 1fr;
     }
 }
-.halal-vitamins{
-    background: linear-gradient(120deg, #f8f9fa 0%, #e9f4ff 100%);
+
+.halal-badge-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    width: 100%;
 }
-.halal-highlight {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(139, 195, 74, 0.15);
-  border: 2px solid var(--accent-color);
-  padding: 12px 25px;
-  border-radius: 6px;
-  margin: 20px auto;
-  max-width: 350px;
-  box-shadow: var(--box-shadow);
-  text-align: center;
+
+.halal-badge {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 25px 35px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    position: relative;
+    border: 3px solid var(--accent-color);
+    max-width: 500px;
+    width: 100%;
+    transform: rotate(-1deg);
+}
+
+.halal-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 195, 74, 0.15) 0%, rgba(255,255,255,0) 60%);
+    pointer-events: none;
+    border-radius: 13px;
+}
+
+.halal-icon-wrapper {
+    margin-right: 25px;
+    position: relative;
 }
 
 .halal-icon {
-  width: 24px;
-  height: 24px;
-  background: var(--accent-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 12px;
-  margin-right: 12px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #a4d65e 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 35px;
+    box-shadow: 0 8px 15px rgba(139, 195, 74, 0.3);
+    position: relative;
 }
 
-.halal-text {
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--primary-color);
+.halal-icon::before {
+    content: '✓';
+}
+
+.halal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.halal-title {
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.halal-subtitle {
+    font-size: 18px;
+    color: var(--gray);
+    font-weight: 500;
+}
+
+/* Optional ribbon effect */
+.halal-badge::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 60px;
+    height: 60px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .halal-badge {
+        padding: 20px 25px;
+        max-width: 90%;
+    }
+    
+    .halal-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+    }
+    
+    .halal-title {
+        font-size: 22px;
+    }
+    
+    .halal-subtitle {
+        font-size: 16px;
+    }
 }
         
     </style>
@@ -4295,16 +4373,16 @@
             </div>
         </div>
 
-        <section class="halal-vitamins">
-            <div class="halal-highlight">
-                <div class="halal-icon">
-                <i class="fas fa-check-circle"></i>
+        <div class="halal-badge-container">
+            <div class="halal-badge">
+                <div class="halal-icon-wrapper">
+                    <div class="halal-icon"></div>
                 </div>
-                <div class="halal-text">
-                We carry halal vitamins also
+                <div class="halal-content">
+                    <div class="halal-title">We also carry Halal Vitamins</div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <div class="page3">
             <div class="page3-up">
