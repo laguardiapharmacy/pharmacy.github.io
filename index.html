@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -3751,392 +3752,429 @@
                 margin-right: 0;
             }
         }
-
         /* Sanitization Products Section - Simplified */
-/* Sanitization Products Section - Simplified */
-.sanitization-section {
-    padding: 80px 0;
-    background-color: #f8f9fa;
-}
+        .sanitization-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
 
-.sanitization-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 50px;
-}
+        .sanitization-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
 
-.sanitization-header {
-    text-align: center;
-    margin-bottom: 50px;
-}
+        .sanitization-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-.sanitization-header h2 {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--primary-color);
-    position: relative;
-    margin-bottom: 25px;
-}
+        .sanitization-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 25px;
+        }
 
-.sanitization-header h2:after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background-color: var(--accent-color);
-}
+        .sanitization-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
 
-.sanitization-products {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 25px;
-}
+        .sanitization-products {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+        }
 
-.sanitization-item {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+        .sanitization-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.sanitization-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
+        .sanitization-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
 
-/* Improved image handling with transparent background */
-.sanitization-img,
-.surgical-img {
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    width: 100%;
-    height: 0;
-    padding-bottom: 75%; /* 3/4 = 0.75 = 75% */
-    position: relative;
-    background-color: transparent; /* Transparent background */
-}
+        /* Improved image handling with transparent background */
+        .sanitization-img,
+        .surgical-img {
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            width: 100%;
+            height: 0;
+            padding-bottom: 75%; /* 3/4 = 0.75 = 75% */
+            position: relative;
+            background-color: transparent; /* Transparent background */
+        }
 
-.sanitization-img img,
-.surgical-img img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps the whole image visible */
-    display: block;
-    transition: transform 0.5s ease;
-}
+        .sanitization-img img,
+        .surgical-img img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps the whole image visible */
+            display: block;
+            transition: transform 0.5s ease;
+        }
 
-.sanitization-item:hover .sanitization-img img,
-.surgical-item:hover .surgical-img img {
-    transform: scale(1.05);
-}
+        .sanitization-item:hover .sanitization-img img,
+        .surgical-item:hover .surgical-img img {
+            transform: scale(1.05);
+        }
 
-.sanitization-title {
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--primary-color);
-}
+        .sanitization-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
 
-/* Surgical Support Items Section - Simplified */
-.surgical-support-section {
-    padding: 80px 0;
-}
+        /* Surgical Support Items Section - Simplified */
+        .surgical-support-section {
+            padding: 80px 0;
+        }
 
-.surgical-support-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 50px;
-}
+        .surgical-support-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
 
-.surgical-support-header {
-    margin-bottom: 40px;
-    text-align: center;
-}
+        .surgical-support-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
 
-.surgical-support-header h2 {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--primary-color);
-    position: relative;
-    margin-bottom: 25px;
-}
+        .surgical-support-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary-color);
+            position: relative;
+            margin-bottom: 25px;
+        }
 
-.surgical-support-header h2:after {
-    content: '';
-    position: absolute;
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background-color: var(--accent-color);
-}
+        .surgical-support-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+        }
 
-.surgical-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
+        .surgical-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
 
-.surgical-item {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: transform 0.3s ease;
-}
+        .surgical-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
 
-.surgical-item:hover {
-    transform: translateY(-10px);
-}
+        .surgical-item:hover {
+            transform: translateY(-10px);
+        }
 
-.surgical-title {
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--primary-color);
-}
+        .surgical-title {
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
 
-/* Responsive Styles */
-@media screen and (max-width: 1100px) {
-    .sanitization-products {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
+        /* Responsive Styles */
+        @media screen and (max-width: 1100px) {
+            .sanitization-products {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
 
-@media screen and (max-width: 992px) {
-    .sanitization-products {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .surgical-items {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+        @media screen and (max-width: 992px) {
+            .sanitization-products {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .surgical-items {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media screen and (max-width: 768px) {
-    .sanitization-products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+        @media screen and (max-width: 768px) {
+            .sanitization-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media screen and (max-width: 576px) {
-    .sanitization-products {
-        grid-template-columns: 1fr;
-    }
-    
-    .surgical-items {
-        grid-template-columns: 1fr;
-    }
-}
+        @media screen and (max-width: 576px) {
+            .sanitization-products {
+                grid-template-columns: 1fr;
+            }
+            
+            .surgical-items {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.halal-badge-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 40px auto;
-    width: 100%;
-}
+        .halal-badge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 100px auto;
+            width: 100%;
+        }
 
-.halal-badge {
-    display: flex;
-    align-items: center;
-    background: white;
-    padding: 25px 35px;
-    border-radius: 16px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-    position: relative;
-    border: 3px solid var(--accent-color);
-    max-width: 500px;
-    width: 100%;
-    transform: rotate(-1deg);
-}
+        .halal-badge {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 25px 35px;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            border: 3px solid var(--accent-color);
+            max-width: 500px;
+            width: 100%;
+            transform: rotate(-1deg);
+        }
 
-.halal-badge::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(139, 195, 74, 0.15) 0%, rgba(255,255,255,0) 60%);
-    pointer-events: none;
-    border-radius: 13px;
-}
+        .halal-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 195, 74, 0.15) 0%, rgba(255,255,255,0) 60%);
+            pointer-events: none;
+            border-radius: 13px;
+        }
 
-.halal-icon-wrapper {
-    margin-right: 25px;
-    position: relative;
-}
+        .halal-icon-wrapper {
+            margin-right: 25px;
+            position: relative;
+        }
 
-.halal-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--accent-color) 0%, #a4d65e 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 35px;
-    box-shadow: 0 8px 15px rgba(139, 195, 74, 0.3);
-    position: relative;
-}
+        .halal-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, #a4d65e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 35px;
+            box-shadow: 0 8px 15px rgba(139, 195, 74, 0.3);
+            position: relative;
+        }
 
-.halal-icon::before {
-    content: '✓';
-}
+        .halal-icon::before {
+            content: '✓';
+        }
 
-.halal-content {
-    display: flex;
-    flex-direction: column;
-}
+        .halal-content {
+            display: flex;
+            flex-direction: column;
+        }
 
-.halal-title {
-    font-weight: 800;
-    font-size: 28px;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+        .halal-title {
+            font-weight: 800;
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-.halal-subtitle {
-    font-size: 18px;
-    color: var(--gray);
-    font-weight: 500;
-}
+        .halal-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            font-weight: 500;
+        }
 
-/* Optional ribbon effect */
-.halal-badge::before {
-    content: '';
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    width: 60px;
-    height: 60px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    z-index: -1;
-    opacity: 0.2;
-}
+        /* Optional ribbon effect */
+        .halal-badge::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+        }
 
-/* Responsive adjustments */
-@media (max-width: 576px) {
-    .halal-badge {
-        padding: 20px 25px;
-        max-width: 90%;
-    }
-    
-    .halal-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
-    }
-    
-    .halal-title {
-        font-size: 22px;
-    }
-    
-    .halal-subtitle {
-        font-size: 16px;
-    }
-}
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .halal-badge {
+                padding: 20px 25px;
+                max-width: 90%;
+            }
+            
+            .halal-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+            
+            .halal-title {
+                font-size: 22px;
+            }
+            
+            .halal-subtitle {
+                font-size: 16px;
+            }
+        }
 
-/* New styles for the no-image notary row */
-.notary-service-row-no-image {
-    max-width: 1000px; /* Adjusted max-width for better text flow without image */
-    margin: 0 auto;
-    padding: 30px 50px; /* Add internal padding */
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    display: flex; /* Use flexbox to center content */
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center items horizontally */
-    text-align: center; /* Center text */
-}
+        /* Notary Public Section - Fully Responsive */
+        .notary-public-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
 
-.notary-service-row-no-image:hover {
-    transform: translateY(-10px);
-}
+        .notary-public-section .service-heading {
+            margin-bottom: 50px;
+        }
 
-.notary-service-row-no-image .text {
-    width: 100%; /* Take full width within its container */
-    padding: 0; /* Remove padding from here as it's on the parent now */
-    display: flex; /* Make this a flex container */
-    flex-direction: column; /* Stack its children */
-    align-items: center; /* Center children horizontally */
-}
+        .notary-service-row-no-image {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.notary-service-row-no-image .text h1 {
-    font-size: 28px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
+        .notary-service-row-no-image .text {
+            width: 100%;
+            max-width: 800px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.notary-service-row-no-image .text h2 {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 25px;
-}
+        .notary-service-row-no-image .text h1 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
 
-.notary-service-row-no-image .text a {
-    display: inline-block; /* Keep as inline-block for proper centering */
-    padding: 12px 25px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 5px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    /* align-self: center; Not needed if text-align: center on parent */
-}
+        .notary-service-row-no-image .text h2 {
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
 
-.notary-service-row-no-image .text a:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+        /* Responsive adjustments for notary section */
+        @media screen and (max-width: 992px) {
+            .notary-public-section {
+                padding: 70px 0;
+            }
+            
+            .notary-service-row-no-image {
+                padding: 35px 40px;
+            }
+        }
 
-/* Responsive adjustments for notary section (no image) */
-@media screen and (max-width: 768px) {
-    .notary-service-row-no-image {
-        padding: 25px 30px;
-    }
-    .notary-service-row-no-image .text h1 {
-        font-size: 24px;
-    }
-    .notary-service-row-no-image .text h2 {
-        font-size: 16px;
-    }
-}
+        @media screen and (max-width: 768px) {
+            .notary-public-section {
+                padding: 60px 0;
+            }
+            
+            .notary-service-row-no-image {
+                padding: 30px 30px;
+                margin: 0 30px;
+            }
+            
+            .notary-service-row-no-image .text h1 {
+                font-size: 24px;
+            }
+            
+            .notary-service-row-no-image .text h2 {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+            
+            .notary-service-row-no-image .text button {
+                padding: 12px 25px;
+            }
+        }
 
-@media screen and (max-width: 576px) {
-    .notary-public-section {
-        padding: 60px 0;
-    }
-    .notary-service-row-no-image {
-        padding: 20px 20px;
-    }
-    .notary-service-row-no-image .text h1 {
-        font-size: 22px;
-    }
-    .notary-service-row-no-image .text h2 {
-        font-size: 15px;
-    }
-} 
+        @media screen and (max-width: 576px) {
+            .notary-public-section {
+                padding: 50px 0;
+            }
+            
+            .notary-service-row-no-image {
+                padding: 25px 20px;
+                margin: 0 20px;
+            }
+            
+            .notary-service-row-no-image .text h1 {
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+            
+            .notary-service-row-no-image .text h2 {
+                font-size: 15px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            
+            .notary-service-row-no-image .text button {
+                padding: 12px 20px;
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            .notary-service-row-no-image {
+                padding: 20px 15px;
+            }
+            
+            .notary-service-row-no-image .text h1 {
+                font-size: 20px;
+            }
+            
+            .notary-service-row-no-image .text h2 {
+                font-size: 14px;
+            }
+        } 
     </style>
 </head>
 <body>
@@ -4364,7 +4402,6 @@
                     <h2>
                         Our certified Notary Public services are fast, reliable, and available when you need important documents notarized.
                     </h2>
-                    <a href="#">Contact Us for Notary</a>
                 </div>
             </div>
         </section>
@@ -4782,7 +4819,7 @@
                         <ul class="payment-list">
                             <li><span class="emphasized">Cash</span> &nbsp;payments accepted</li>
                             <li><span class="emphasized">Credit Cards</span> &nbsp;- Visa, MasterCard, American Express, Discover</li>
-                            <li><span class="emphasized">Debit Cards</span> &nbsp;- All major cards accepted</li>
+                            <li><span class="emphasized">Debit Cards</span> &nbnbsp;- All major cards accepted</li>
                             <li><span class="emphasized">Mobile Payments</span> &nbsp;- Apple Pay, Google Pay, Samsung Pay</li>
                             <li><span class="emphasized">WIC</span> &nbsp;checks accepted</li>
                             <li><span class="emphasized">OTC card</span> &nbsp;for eligible items</li>
