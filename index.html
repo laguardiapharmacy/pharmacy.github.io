@@ -5367,14 +5367,6 @@
             window.addEventListener('scroll', animateOnScroll);
         });
         
-        // Current year for copyright
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearElement = document.querySelector('.page6-end h2');
-            if (yearElement) {
-                const currentYear = new Date().getFullYear();
-                yearElement.innerHTML = `&copy; ${currentYear} Laguardia Pharmacy. All Rights Reserved.`;
-            }
-        });
         
         // Image lazy loading
         document.addEventListener('DOMContentLoaded', function() {
@@ -5434,11 +5426,6 @@
                 testimonialSlider.style.animationPlayState = 'running';
             });
         }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('year').textContent = new Date().getFullYear();
-        });
     </script>
     <script>
         // Show popup when privacy link is clicked
